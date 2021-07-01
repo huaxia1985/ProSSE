@@ -1,7 +1,7 @@
 # ProSSE
 Protracted Speciation Extinction
 
-See details in Hua et al. 2021. Protracted speciation under the state-dependent speciation and extinction approach. bioRxiv.
+See details in Hua et al. 2021. Protracted speciation under the state-dependent speciation and extinction approach. bioRxiv doi:10.1101/2021.06.29.450466
 
 To implement ProSSE, user needs to recompile 'diversitree' R package locally, following these steps:
 1. download and upzip 'diversitree' source code
