@@ -64,7 +64,7 @@ fit <- find.mle(lik,p,lower=c(0,0,0))
 
 \references{
   Hua X., Herdha T., and Burden C. 2021. Protracted speciation under the
-  state-dependent speciation and extinction approach (bioRxiv).
+  state-dependent speciation and extinction approach. bioRxiv doi:10.1101/2021.06.29.450466
 }
 
 \author{Xia Hua}
