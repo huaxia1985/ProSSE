@@ -11,7 +11,7 @@
 ##   branches
 
 ## 1: make
-make.prosse.sp <- function (tree,control=list(compiled=FALSE,backend="gslode")) {
+make.prosse.sp <- function (tree,control=list(compiled=FALSE,backend="gslode",condition.surv=T)) {
 	cache <- make.cache.prosse.sp(tree,control)
 	all.branches <- make.all.branches.prosse.sp(cache,cache$control)
 	rootfunc <- function (res, pars, condition.surv) {
@@ -31,7 +31,7 @@ make.prosse.sp <- function (tree,control=list(compiled=FALSE,backend="gslode")) 
 
   		loglik
   	}
-	ll <- function (pars,condition.surv=T) {
+	ll <- function (pars,condition.surv=control$condition.surv) {
 		ans <- all.branches(pars)
 		rootfunc(ans, pars, condition.surv)
 	}
@@ -151,8 +151,8 @@ make.branches.comp.sp<- function(branches, eps=0) {
 }
 
 make.info.prosse.sp <- function (phy) {
-	list(name="prosse.sp",
-	     derivs=derivs.prosse.sp,
+	list(name="prosse_sp",
+	     derivs=derivs.prosse_sp,
 		 np=3L,
 		 ny=6L,
 		 k=2L,
@@ -164,7 +164,7 @@ make.info.prosse.sp <- function (phy) {
 		 mcmc.lowerzero=TRUE) 
 }
 
-derivs.prosse.sp <- function (t,y,pars) {
+derivs.prosse_sp <- function (t,y,pars) {
 			Ei <- y[1]
 			Er <- y[2]
 			D <- y[3]
