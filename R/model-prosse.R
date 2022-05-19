@@ -265,9 +265,9 @@ make.cache.tree.prosse <- function(tree) {
   
   is.tip <- idx <= n.tip
 
-  children <- get.children(edge, n.tip)
+  children <- diversitree:::get.children(edge, n.tip)
   parent <- edge[match(idx, edge[,2]),1]
-  order <- order.tmp <- get.ordering(children,is.tip,root)
+  order <- order.tmp <- diversitree:::get.ordering(children,is.tip,root)
   
   species <- tree$species
   
@@ -361,7 +361,7 @@ make.cache.tree.prosse <- function(tree) {
   
   len <- edge.length[match(idx, edge[,2])]
 
-  height <- branching.heights(tree)
+  height <- diversitree:::branching.heights(tree)
   depth <- max(height) - height
   len[root] <- tree$root.depth-max(depth)
 
