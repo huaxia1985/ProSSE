@@ -245,11 +245,12 @@ all.branches.matrix.prosse <- function (pars,cache,initial.conditions,branches) 
   	}
  	
   	y.in <- initial.conditions(branch.base[children[root,]], pars, depth[root])
-  	branch.init[[root]] <- y.in
-  	ans <- branches(y.in, len[root], pars, depth[root], star=2)
-    lq[root] <- ans[1]
-    branch.base[[root]] <- ans[-1]
-  	
+  	branch.base[[root]] <- branch.init[[root]] <- y.in
+	if (len[root]>0) {
+  		ans <- branches(y.in, len[root], pars, depth[root], star=2)
+    		lq[root] <- ans[1]
+    		branch.base[[root]] <- ans[-1]
+	}
   list(init=branch.init, base=branch.base, lq=lq, vals=branch.base[[root]])
 }
 
@@ -363,6 +364,7 @@ make.cache.tree.prosse <- function(tree) {
 
   height <- diversitree:::branching.heights(tree)
   depth <- max(height) - height
+  if (is.null(tree$root.depth)) {tree$root.depth <- max(depth)}      
   len[root] <- tree$root.depth-max(depth)
 
   if ( is.ultrametric(tree) )
