@@ -46,6 +46,7 @@ make.cache.prosse.sp <- function (tree,control) {
   	
   	## 2: Control structure
 	cache <- diversitree:::make.cache(tree)
+	if (is.null(tree$root.depth)) {tree$root.depth <- max(cache$depth)}
 	cache$len[cache$root] <- tree$root.depth-max(cache$depth)
 	control <- diversitree:::check.control.ode(control)
 	cache$control <- control
@@ -113,11 +114,12 @@ all.branches.matrix.prosse.sp <- function (pars,cache,initial.conditions,branche
   	}
 	
 	y.in <- initial.conditions(branch.base[children[root,]], pars)
-   	branch.init[[root]] <- y.in
-   	ans <- branches(branch.init[[root]], len[root], pars, depth[root])
-    lq[root] <- ans[[1]]
-    branch.base[[root]] <- ans[[2]]
-    	
+   	branch.base[[root]] <- branch.init[[root]] <- y.in
+	if (len[root]>0) {
+   		ans <- branches(branch.init[[root]], len[root], pars, depth[root])
+    		lq[root] <- ans[[1]]
+    		branch.base[[root]] <- ans[[2]]
+	}
 	list(init=branch.init, base=branch.base, lq=lq, vals=branch.base[[root]], er.root=branch.base[[children[root,1]]][2])
 }   	
 
