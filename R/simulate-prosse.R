@@ -157,10 +157,10 @@ prune.prosse <- function (phy, to.drop = NULL)
         NULL
     }
     else if (any(to.drop)) {
-        phy2 <- drop.tip.fixed(phy, phy$tip.label[to.drop])
+        phy2 <- diversitree:::drop.tip.fixed(phy, phy$tip.label[to.drop])
         phy2$orig <- phy2$orig[!phy2$orig$extinct, ]
         phy2$species <- phy2$species[!to.drop]
-        phy2$hist <- prune.hist(phy, phy2)
+        phy2$hist <- diversitree:::prune.hist(phy, phy2)
         phy2
     }
     else {
