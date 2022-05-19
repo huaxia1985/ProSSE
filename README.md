@@ -3,13 +3,19 @@ Protracted Speciation Extinction
 
 See details in Hua et al. 2021. Protracted speciation under the state-dependent speciation and extinction approach. bioRxiv doi:10.1101/2021.06.29.450466
 
-To implement ProSSE, user needs to recompile 'diversitree' R package locally, following these steps:
+To use ProSSE on lineage-level trees, or slower ode solver for ProSSE on species-level trees, users use the following steps:
+1. download all the files in the 'R' folder, except for 'simulation.R'
+3. install and library R packages 'diversitree', 'ape', and 'deSolve' in R
+4. import all the downloaded R files into R, using source("file location")
+5. now all the functions are ready to use
+
+Alternatively, to use faster ode solver for ProSSE on species-level trees, user needs to recompile 'diversitree' R package locally, following these steps:
 1. download and upzip 'diversitree' source code
 2. download all the files from this repository
 3. replace NAMESPACE in the 'diversitree' source code
 4. put all the files in the 'R' folder to the 'R' folder in the the 'diversitree' source code
 5. put all the files in the 'man' folder to the 'man' folder in the the 'diversitree' source code
-6. install R package 'devtools'
+6. install R package 'devtools' (note that 'diversitree' needs gsl installed)
 7. using devtools to compile 'diversitree' locally
 
        library(devtools)
@@ -58,7 +64,7 @@ Here is the code you can use to regenerate the results in the paper:
  #simulate lineage-level tree
  
     pars <- as.numeric(pars.list[i,])
-    tree <- try(tree.prosse(pars,max.t),silent=T)
+    tree <- try(tree.prosse(pars=pars,max.t=max.t),silent=T)
     while(inherits(tree,"try-error") || is.null(tree) || length(unique(tree$species)) <3 || length(unique(tree$species))>10000) {tree <- try(tree.prosee(pars,max.t),silent=T)}
     tree.list[[i]][[j]] <- tree
             
