@@ -45,9 +45,9 @@ make.cache.prosse.sp <- function (tree,control) {
   	#tree <- check.tree(tree)
   	
   	## 2: Control structure
-	cache <- make.cache(tree)
+	cache <- diversitree:::make.cache(tree)
 	cache$len[cache$root] <- tree$root.depth-max(cache$depth)
-	control <- check.control.ode(control)
+	control <- diversitree:::check.control.ode(control)
 	cache$control <- control
 	
 	cache$info <- make.info.prosse.sp(tree)
@@ -75,7 +75,7 @@ make.all.branches.prosse.sp <- function (cache,control) {
 
 make.branches.prosse.sp <- function(info,control) {
 	eps <- control$eps
-	ode <- make.ode(info,control) #make a list of ODEs, with the first cell for DI* and the second cell for DI.
+	ode <- diversitree:::make.ode(info,control) #make a list of ODEs, with the first cell for DI* and the second cell for DI.
 	branches <- function(y, len, pars, t0) {ode(y, c(t0, t0+len), pars)}
   	make.branches.comp.sp(branches, eps)
 }
