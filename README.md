@@ -1,7 +1,7 @@
 # ProSSE
 Protracted Speciation Extinction
 
-See details in Hua et al. 2021. Protracted speciation under the state-dependent speciation and extinction approach. bioRxiv doi:10.1101/2021.06.29.450466
+See details in Hua X., Herdha T., Burden C. 2022. Protracted speciation under the state-dependent speciation and extinction approach. Syst. Biol. doi:10.1093/sysbio/syac041
 
 To use ProSSE on lineage-level trees, or slower ode solver for ProSSE on species-level trees, users use the following steps:
 1. download all the files in the 'R' folder, except for 'simulation.R'
