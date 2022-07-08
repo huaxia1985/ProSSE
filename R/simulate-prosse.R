@@ -86,7 +86,11 @@ tree.prosse <- function(pars, max.taxa=Inf, max.t=Inf,
                        include.extinct=FALSE, sampling=FALSE) {
   info <- make.tree.prosse(pars, max.taxa, max.t, x0)
   phy <- me.to.ape.prosse(info[-1,], root.depth=attr(info, "t"))
-  if (!include.extinct) {phy <- prune.prosse(phy)}
+  if (include.extinct || is.null(phy)) {
+	  phy
+	  } else {
+	  phy <- prune.prosse(phy)
+  }
   if (sampling) {
   	species.label <- unique(phy$species)
   	n.species <- length(species.label)
