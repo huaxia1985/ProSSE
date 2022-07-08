@@ -91,7 +91,7 @@ tree.prosse <- function(pars, max.taxa=Inf, max.t=Inf,
 	  } else {
 	  phy <- prune.prosse(phy)
   }
-  if (sampling || !is.null(phy) {
+  if (sampling && !is.null(phy) {
   	species.label <- unique(phy$species)
   	n.species <- length(species.label)
   	tip.species <- sapply(species.label,function(i) is.element(phy$species,i))
