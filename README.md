@@ -112,18 +112,18 @@ Here is the code you can use to regenerate the results in the paper:
 	pars.list[[4]] <- list(b.mu.list[1,1], b.mu.list[1,2], lambda.list[[1]],char,trait.q.list[2],trait.p.list[2])
 	pars.list[[5]] <- list(b.mu.list[1,1], b.mu.list[1,2], lambda.list[[1]],char,trait.q.list[3],trait.p.list[1])
 
-j <- 2
+	j <- 2
 	for (i in 1:5) {
 		pars.list[[i+5*(j-1)]] <- pars.list[[i]]
 		pars.list[[i+5*(j-1)]][[3]] <- lambda.list[[j]]
 	}
-for (j in 2:3) {
+	for (j in 2:3) {
 	for (i in 1:10) {
 		pars.list[[i+10*(j-1)]] <- pars.list[[i]]
 		pars.list[[i+10*(j-1)]][[1]] <- b.mu.list[j,1]
 		pars.list[[i+10*(j-1)]][[2]] <- b.mu.list[j,2]
 	}
-}
+	}
 
 #setting total simulation time and size for trees
 max.taxa <- 500
