@@ -126,78 +126,98 @@ Here is the code you can use to regenerate the results in the paper:
 	}
 
 #setting total simulation time and size for trees
-max.taxa <- 500
-max.t <- 15
+
+	max.taxa <- 500
+	max.t <- 15
 
 #initiate simuating 50 trees under each parameter set and fit extended ProSSE on each tree using ML
-n <- length(pars.list)
-tree.list <- vector("list",n)
-fit.list <- vector("list",n)
+
+	n <- length(pars.list)
+	tree.list <- vector("list",n)
+	fit.list <- vector("list",n)
+ 	mcmc.list <- vector("list",n)
 
 #suppose we use the first parameter set
-i <- 1
-pars <- pars.list[[i]]
-tree.list[[i]] <- vector("list",100)
-fit.list[[i]] <- vector("list",100)
-mcmc.list <- vector("list",n)
-mcmc.list[[i]] <- vector("list",10)
+
+	i <- 1
+	pars <- pars.list[[i]]
+	tree.list[[i]] <- vector("list",100)
+	fit.list[[i]] <- vector("list",100)
+	mcmc.list[[i]] <- vector("list",10)
 
 #get the probability distribution of the root state
-root.p <- as.numeric(pars.list[[i]][[5]][[1]])
-root.p <- rev(root.p/sum(root.p))
+
+	root.p <- as.numeric(pars.list[[i]][[5]][[1]])
+	root.p <- rev(root.p/sum(root.p))
 
 #simulate 100 tree under extended ProSSE
-for (j in 1:100) {
+
+	for (j in 1:100) {
+ 
 #sample root state
+
 	x0 <- sample(c(1,2),1,T,root.p)
-       x0 <- c(0,x0)
-    tree <- try(tree.prosse.multi(pars,max.taxa,max.t,x0),silent=T)
+	x0 <- c(0,x0)
+	tree <- try(tree.prosse.multi(pars,max.taxa,max.t,x0),silent=T)
+ 
 #filter out trees that have too few species, too few lineages, and two few species with each state
-    while(inherits(tree,"try-error") || is.null(tree) || length(tree$tip.label)<10 || length(unique(tree$species))<3 || length(unique(tree$species))/length(tree$tip.label)>0.7 || sum(tree$traits==1)/length(tree$tip.label)>0.9 || sum(tree$traits==2)/length(tree$tip.label)>0.9 ) {
+
+	while(inherits(tree,"try-error") || is.null(tree) || length(tree$tip.label)<10 || length(unique(tree$species))<3 || length(unique(tree$species))/length(tree$tip.label)>0.7 || sum(tree$traits==1)/length(tree$tip.label)>0.9 || sum(tree$traits==2)/length(tree$tip.label)>0.9 ) {
         tree <- try(tree.prosse.multi(pars,max.taxa,max.t,x0),silent=T)
-    }
-    tree.list[[i]][[j]] <- tree
+	}
+	tree.list[[i]][[j]] <- tree
 
 #get ML estimates using extended ProSSE for the tree
-    lik <- make.prosse.multi(tree, tree$traits, tree$states, states.sd, exp.x)
-    p <- starting.point.prosse.multi(tree, lik, q.div=5, tree$states, states.sd)
+
+	lik <- make.prosse.multi(tree, tree$traits, tree$states, states.sd, exp.x)
+	p <- starting.point.prosse.multi(tree, lik, q.div=5, tree$states, states.sd)
+ 
 #you can apply constrains on parameters, e.g., make drift term equals 0
-    lik <- constrain(lik,drift~0)
-    fit <- find.mle(lik,p[-8],lower=rep(0,8),upper=c(Inf,Inf,Inf,Inf,Inf,1,1,Inf))
-    fit.list[[i]][[j]] <- fit$par.full
-}
+
+	lik <- constrain(lik,drift~0)
+	fit <- find.mle(lik,p[-8],lower=rep(0,8),upper=c(Inf,Inf,Inf,Inf,Inf,1,1,Inf))
+	fit.list[[i]][[j]] <- fit$par.full
+	}
 
 #pick 10% tips to have unknown species identities
-n.unknown.tip <- round(length(tree$tip.label)*0.1)
-    unknown.tip <- sample(x=tree$tip.label,size=n.unknown.tip)
-    tree$species[unknown.tip] <- 0
-    species <- unique(tree$species)
-    tree$species[unknown.tip] <- c(1:n.unknown.tip)+max(species)
-    species.name <- tree$species[unknown.tip]
+
+	n.unknown.tip <- round(length(tree$tip.label)*0.1)
+	unknown.tip <- sample(x=tree$tip.label,size=n.unknown.tip)
+	tree$species[unknown.tip] <- 0
+	species <- unique(tree$species)
+	tree$species[unknown.tip] <- c(1:n.unknown.tip)+max(species)
+	species.name <- tree$species[unknown.tip]
 
 #apply MCMC to infer species identities of these tips
+
 #set prior
-prior <- list(make.prior.exponential(0.5),make.prior.exponential(0.5),make.prior.exponential(0.5),make.prior.exponential(0.5),make.prior.exponential(0.5),make.prior.beta(0.5),make.prior.beta(0.5),make.prior.exponential(0.5))
+
+	prior <- list(make.prior.exponential(0.5),make.prior.exponential(0.5),make.prior.exponential(0.5),make.prior.exponential(0.5),make.prior.exponential(0.5),make.prior.beta(0.5),make.prior.beta(0.5),make.prior.exponential(0.5))
+ 
 #define likelihood function
-    lik <- make.prosse.multi2(tree, tree$traits, tree$states, states.sd, exp.x)
-    p <- starting.point.prosse.multi(tree, lik, q.div=5, tree$states, states.sd)
-    names(p) <- c("b","mu","l.r","q12.1","q21.1","p12.1","p21.1","drift","diffusion")
-    x.init <- c(p[-8],tree$species[unknown.tip])
-    lik <- constrain(lik,drift~0)
+
+	lik <- make.prosse.multi2(tree, tree$traits, tree$states, states.sd, exp.x)
+ 	p <- starting.point.prosse.multi(tree, lik, q.div=5, tree$states, states.sd)
+	names(p) <- c("b","mu","l.r","q12.1","q21.1","p12.1","p21.1","drift","diffusion")
+	x.init <- c(p[-8],tree$species[unknown.tip])
+	lik <- constrain(lik,drift~0)
+ 
 #run MCMC
-    mcmc.list[[i]][[j]] <- mcmc.prosse.multi(lik=lik, tree=tree, species.name=species.name, unknown.tip=unknown.tip, traits=tree$traits, states=tree$states, states.sd=states.sd, lambda=exp.x, x.init=x.init, nstepsw=30,nsteps=5000,w=rep(1,8),prior=prior,lower=rep(0,8),upper=c(Inf,Inf,Inf,Inf,Inf,1,1,Inf))
+
+	mcmc.list[[i]][[j]] <- mcmc.prosse.multi(lik=lik, tree=tree, species.name=species.name, unknown.tip=unknown.tip, traits=tree$traits, states=tree$states, states.sd=states.sd, lambda=exp.x, x.init=x.init, nstepsw=30,nsteps=5000,w=rep(1,8),prior=prior,lower=rep(0,8),upper=c(Inf,Inf,Inf,Inf,Inf,1,1,Inf))
 
 #we can also apply MCMC to trees with constant speciation modes and rates that are simulated from ProSSE
-names(tree$species) <- tree$tip.label
-    n.unknown.tip <- round(length(tree$tip.label)*0.3)
-    unknown.tip <- sample(x=tree$tip.label,size=n.unknown.tip)
-    tree$species[unknown.tip] <- 0
-    species <- unique(tree$species)
-    tree$species[unknown.tip] <- c(1:n.unknown.tip)+max(species)
-    species.name <- tree$species[unknown.tip]
-    prior <- make.prior.exponential(0.5)
-    lik <- make.prosse(tree)
-    p <- starting.point.prosse(tree, lik, q.div=5)
-    names(p) <- c("b","mu","lambda")
-    x.init <- c(p,tree$species[unknown.tip])
-    mcmc.list[[i]][[j]] <- mcmc.prosse(lik=lik, tree=tree, species.name=species.name, unknown.tip=unknown.tip, x.init=x.init, nstepsw=30,nsteps=5000,w=rep(1,3),prior=prior,lower=rep(0,3),upper=c(Inf,Inf,Inf))
+
+	names(tree$species) <- tree$tip.label
+	n.unknown.tip <- round(length(tree$tip.label)*0.1)
+	unknown.tip <- sample(x=tree$tip.label,size=n.unknown.tip)
+	tree$species[unknown.tip] <- 0
+	species <- unique(tree$species)
+	tree$species[unknown.tip] <- c(1:n.unknown.tip)+max(species)
+	species.name <- tree$species[unknown.tip]
+	prior <- make.prior.exponential(0.5)
+	lik <- make.prosse(tree)
+	p <- starting.point.prosse(tree, lik, q.div=5)
+	names(p) <- c("b","mu","lambda")
+	x.init <- c(p,tree$species[unknown.tip])
+	mcmc.list[[i]][[j]] <- mcmc.prosse(lik=lik, tree=tree, species.name=species.name, unknown.tip=unknown.tip, x.init=x.init, nstepsw=30,nsteps=5000,w=rep(1,3),prior=prior,lower=rep(0,3),upper=c(Inf,Inf,Inf))
