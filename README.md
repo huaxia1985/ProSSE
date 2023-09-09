@@ -97,6 +97,7 @@ See details in Hua X., Moritz C. 2023. A phylogenetic approach to delimitate spe
 Here is the code you can use to regenerate the results in the paper:
 
 #setting parameter values
+
 	b.mu.list <- rbind(c(0.3,0),c(0.4,0.1),c(0.5,0.1))
 	lambda.list <- list(function (x) {0.1*exp(x)}, function (x) {1*exp(x)})
 	char <- make.brownian.with.drift(0,0.1)
