@@ -105,12 +105,12 @@ Here is the code you can use to regenerate the results in the paper:
 	trait.p.list <- list(matrix(c(0,0,1,0),nrow=2),matrix(c(0,0.5,0.5,0),nrow=2))
 	states.sd <- 0.01
 
-pars.list <- vector("list",30)
-pars.list[[1]] <- list(b.mu.list[1,1], b.mu.list[1,2], lambda.list[[1]],char,trait.q.list[1],trait.p.list[1])
-pars.list[[2]] <- list(b.mu.list[1,1], b.mu.list[1,2], lambda.list[[1]],char,trait.q.list[1],trait.p.list[2])
-pars.list[[3]] <- list(b.mu.list[1,1], b.mu.list[1,2], lambda.list[[1]],char,trait.q.list[2],trait.p.list[1])
-pars.list[[4]] <- list(b.mu.list[1,1], b.mu.list[1,2], lambda.list[[1]],char,trait.q.list[2],trait.p.list[2])
-pars.list[[5]] <- list(b.mu.list[1,1], b.mu.list[1,2], lambda.list[[1]],char,trait.q.list[3],trait.p.list[1])
+	pars.list <- vector("list",30)
+	pars.list[[1]] <- list(b.mu.list[1,1], b.mu.list[1,2], lambda.list[[1]],char,trait.q.list[1],trait.p.list[1])
+	pars.list[[2]] <- list(b.mu.list[1,1], b.mu.list[1,2], lambda.list[[1]],char,trait.q.list[1],trait.p.list[2])
+	pars.list[[3]] <- list(b.mu.list[1,1], b.mu.list[1,2], lambda.list[[1]],char,trait.q.list[2],trait.p.list[1])
+	pars.list[[4]] <- list(b.mu.list[1,1], b.mu.list[1,2], lambda.list[[1]],char,trait.q.list[2],trait.p.list[2])
+	pars.list[[5]] <- list(b.mu.list[1,1], b.mu.list[1,2], lambda.list[[1]],char,trait.q.list[3],trait.p.list[1])
 
 j <- 2
 	for (i in 1:5) {
