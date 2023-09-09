@@ -97,12 +97,12 @@ See details in Hua X., Moritz C. 2023. A phylogenetic approach to delimitate spe
 Here is the code you can use to regenerate the results in the paper:
 
 #setting parameter values
-b.mu.list <- rbind(c(0.3,0),c(0.4,0.1),c(0.5,0.1))
-lambda.list <- list(function (x) {0.1*exp(x)}, function (x) {1*exp(x)})
-char <- make.brownian.with.drift(0,0.1)
-trait.q.list <- list(matrix(c(0.1,0.03),nrow=2),matrix(c(0.1,0.1),nrow=2),matrix(c(0.03,0.1),nrow=2))
-trait.p.list <- list(matrix(c(0,0,1,0),nrow=2),matrix(c(0,0.5,0.5,0),nrow=2))
-states.sd <- 0.01
+	b.mu.list <- rbind(c(0.3,0),c(0.4,0.1),c(0.5,0.1))
+	lambda.list <- list(function (x) {0.1*exp(x)}, function (x) {1*exp(x)})
+	char <- make.brownian.with.drift(0,0.1)
+	trait.q.list <- list(matrix(c(0.1,0.03),nrow=2),matrix(c(0.1,0.1),nrow=2),matrix(c(0.03,0.1),nrow=2))
+	trait.p.list <- list(matrix(c(0,0,1,0),nrow=2),matrix(c(0,0.5,0.5,0),nrow=2))
+	states.sd <- 0.01
 
 pars.list <- vector("list",30)
 pars.list[[1]] <- list(b.mu.list[1,1], b.mu.list[1,2], lambda.list[[1]],char,trait.q.list[1],trait.p.list[1])
