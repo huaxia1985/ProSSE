@@ -17,7 +17,7 @@
 ## is similar to S3 generics/methods.
 trees <- function(pars,
                   type=c("bisse", "bisseness", "bd", "classe", "geosse",
-                         "musse", "quasse", "prosse", "yule"), n=1,
+                         "musse", "quasse", "prosse", "prosse.multi", "yule"), n=1,
                   max.taxa=Inf, max.t=Inf, include.extinct=FALSE,
                   ...) {
   if ( is.infinite(max.taxa) && is.infinite(max.t) )
@@ -31,6 +31,7 @@ trees <- function(pars,
               geosse=tree.geosse,
               musse=tree.musse,
               prosse=tree.prosse,
+              prosse.multi=tree.prosse.multi,
               yule=tree.yule)
   trees <- vector("list", n)  
   i <- 1
