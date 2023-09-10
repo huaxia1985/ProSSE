@@ -130,7 +130,7 @@ Here is the code you can use to regenerate the results in the paper:
 	max.taxa <- 500
 	max.t <- 15
 
-#initiate simuating 50 trees under each parameter set and fit extended ProSSE on each tree using ML
+#initiate simuating 100 trees under each parameter set and fit extended ProSSE on each tree using ML
 
 	n <- length(pars.list)
 	tree.list <- vector("list",n)
