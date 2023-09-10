@@ -96,11 +96,11 @@ Here is the code you can use to regenerate the results in the paper:
 	}
  
 # Extended ProSSE
-Extending Protracted Speciation Extinction to account for varying modes and rates, and uncertain species identities
+Extending Protracted Speciation Extinction to account for multiple modes and rates, and uncertain species identities
 
 See details in Hua X., Moritz C. 2023. A phylogenetic approach to delimitate species in a probabilistic way.
 
-Here is the code you can use to regenerate the results in the paper:
+Here is the code you can use to regenerate the simulation results in the paper:
 
 #setting parameter values
 
