@@ -9,6 +9,7 @@
 \alias{tree.musse.multitrait}
 \alias{tree.quasse}
 \alias{tree.prosse}
+\alias{tree.prosse.multi}
 \alias{tree.yule}
 \alias{prune}
 \alias{prune.prosse}
@@ -20,7 +21,8 @@
   Extinction), BiSSE-ness (BiSSE-node enhanced state shift), ClaSSE
   (Cladogenetic State change Speciation and Extinction), or GeoSSE
   (Geographic State Speciation and Extinction) model, ProSSE 
-  (Protraced Speciation and Extinction) or a simple
+  (Protraced Speciation and Extinction), ProSSE.multi (Protracted 
+  speciation and Extinction with multiple modes and rates) or a simple
   character independent birth-death model.  For the SSE models, it
   simultaneously evolves a character that affects speciation and/or
   extinction, and the tree itself.
@@ -37,25 +39,20 @@ tree.musse(pars, max.taxa=Inf, max.t=Inf, include.extinct=FALSE,
            x0=NA)
 tree.musse.multitrait(pars, n.trait, depth, max.taxa=Inf, max.t=Inf,
                       include.extinct=FALSE, x0=NA)
-
 tree.quasse(pars, max.taxa=Inf, max.t=Inf, include.extinct=FALSE, x0=NA,
             single.lineage=TRUE, verbose=FALSE)
-
 tree.bisseness(pars, max.taxa=Inf, max.t=Inf, include.extinct=FALSE,
                x0=NA)
-
 tree.classe(pars, max.taxa=Inf, max.t=Inf, include.extinct=FALSE,
            x0=NA)
-
 tree.geosse(pars, max.taxa=Inf, max.t=Inf, include.extinct=FALSE,
            x0=NA)
-           
 tree.prosse(pars, max.taxa=Inf, max.t=Inf, include.extinct=FALSE,
-		   x0=NA)           
-
+		   x0=NA)      	        
+tree.prosse.multi(pars, max.taxa=Inf, max.t=Inf, x0, 
+			single.lineage=TRUE, verbose=FALSE)
 tree.bd(pars, max.taxa=Inf, max.t=Inf, include.extinct=FALSE)
 tree.yule(pars, max.taxa=Inf, max.t=Inf, include.extinct=FALSE)
-
 prune(phy, to.drop=NULL)
 prune.prosse(phy, to.drop=NULL)
 }
@@ -84,8 +81,11 @@ prune.prosse(phy, to.drop=NULL)
   
   \item{x0}{Initial character state at the root (state 0 or 1).  A value
     of \code{NA} will randomly choose a state from the model's
-    equilibrium distribution for a BiSSE, ClaSSE, GeoSSE model, or ProSSE
-    model, but a non-NA value must be specified for MuSSE and QuaSSE.}
+    equilibrium distribution for a BiSSE, ClaSSE, GeoSSE model, but a 
+    non-NA value must be specified for MuSSE, QuaSSE. For ProSSE.multi,
+    x0 is a vector, with the first value being the ancestral value for 
+    the continuous trait and the rest being the ancestral value for
+    any number of discrete traits.}
 
   \item{n.trait, depth}{For \code{tree.musse.multitrait} only, these
     specify the number of binary traits and the style of parameters
