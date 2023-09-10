@@ -89,6 +89,12 @@ Here is the code you can use to regenerate the results in the paper:
             
 #get ML estimates using ProSSE for species-level tree
 
+	lik <- make.prosse.sp(tree)
+	p <- starting.point.prosse(tree)
+	fit <- find.mle(lik,p,lower=c(0,0,0))
+	fit.rep.list[[i]][[j]] <- fit$par
+	}
+ 
 # Extended ProSSE
 Extending Protracted Speciation Extinction to account for varying modes and rates, and uncertain species identities
 
