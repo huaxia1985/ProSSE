@@ -100,6 +100,8 @@ Extending Protracted Speciation Extinction to account for multiple modes and rat
 
 See details in Hua X., Moritz C. 2023. A phylogenetic approach to delimitate species in a probabilistic way.
 
+To use the code, the diversitree package needs to be recomplied as described above.
+
 Here is the code you can use to regenerate the simulation results in the paper:
 
 #setting parameter values
@@ -160,13 +162,13 @@ Here is the code you can use to regenerate the simulation results in the paper:
 
 	for (j in 1:100) {
  
-#sample root state
+#sample root state and simulate a tree
 
 	x0 <- sample(c(1,2),1,T,root.p)
 	x0 <- c(0,x0)
 	tree <- try(tree.prosse.multi(pars,max.taxa,max.t,x0),silent=T)
  
-#filter out trees that have too few species, too few lineages, and two few species with each state
+#simulate a new tree if the old tree has too few species, too few lineages, and two few species with each state
 
 	while(inherits(tree,"try-error") || is.null(tree) || length(tree$tip.label)<10 || length(unique(tree$species))<3 || length(unique(tree$species))/length(tree$tip.label)>0.7 || sum(tree$traits==1)/length(tree$tip.label)>0.9 || sum(tree$traits==2)/length(tree$tip.label)>0.9 ) {
         tree <- try(tree.prosse.multi(pars,max.taxa,max.t,x0),silent=T)
@@ -194,7 +196,7 @@ Here is the code you can use to regenerate the simulation results in the paper:
 	tree$species[unknown.tip] <- c(1:n.unknown.tip)+max(species)
 	species.name <- tree$species[unknown.tip]
 
-#apply MCMC to infer species identities of these tips
+#apply MCMC to infer species identities of these tips, while coestimating parameters
 
 #set prior
 
@@ -202,7 +204,7 @@ Here is the code you can use to regenerate the simulation results in the paper:
  
 #define likelihood function
 
-	lik <- make.prosse.multi2(tree, tree$traits, tree$states, states.sd, exp.x)
+	lik <- make.prosse.multi(tree, tree$traits, tree$states, states.sd, exp.x)
  	p <- starting.point.prosse.multi(tree, lik, q.div=5, tree$states, states.sd)
 	names(p) <- c("b","mu","l.r","q12.1","q21.1","p12.1","p21.1","drift","diffusion")
 	x.init <- c(p[-8],tree$species[unknown.tip])
