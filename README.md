@@ -204,15 +204,14 @@ Here is the code you can use to regenerate the simulation results in the paper:
  
 #define likelihood function
 
-	lik <- make.prosse.multi(tree, tree$traits, tree$states, states.sd, exp.x)
+	lik <- make.prosse.multi2(tree, tree$traits, tree$states, states.sd, exp.x)
  	p <- starting.point.prosse.multi(tree, lik, q.div=5, tree$states, states.sd)
 	names(p) <- c("b","mu","l.r","q12.1","q21.1","p12.1","p21.1","drift","diffusion")
 	x.init <- c(p[-8],tree$species[unknown.tip])
-	lik <- constrain(lik,drift~0)
  
 #run MCMC
 
-	mcmc.list[[i]][[j]] <- mcmc.prosse.multi(lik=lik, tree=tree, species.name=species.name, unknown.tip=unknown.tip, traits=tree$traits, states=tree$states, states.sd=states.sd, lambda=exp.x, x.init=x.init, nstepsw=30,nsteps=5000,w=rep(1,8),prior=prior,lower=rep(0,8),upper=c(Inf,Inf,Inf,Inf,Inf,1,1,Inf))
+	mcmc.list[[i]][[j]] <- mcmc.prosse.multi(lik=lik, tree=tree, species.name=species.name, unknown.tip=unknown.tip, traits=tree$traits, states=tree$states, states.sd=states.sd, lambda=exp.x, constraint=list(drift~0),x.init=x.init, nstepsw=30,nsteps=5000,w=rep(1,8),prior=prior,lower=rep(0,8),upper=c(Inf,Inf,Inf,Inf,Inf,1,1,Inf))
 
 #we can also apply MCMC to trees with constant speciation modes and rates that are simulated from ProSSE
 
