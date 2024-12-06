@@ -33,7 +33,7 @@ Alternatively, to use faster solver in C, user needs to recompile 'diversitree' 
 
 Here is the code you can use to regenerate the simulation results in Hua et al. 2022:
 
-#setting parameter values
+setting parameter values
 
     b.list <- seq(0.3,0.6,0.1)
     mu.list <- seq(0,0.2,0.1)
@@ -41,11 +41,11 @@ Here is the code you can use to regenerate the simulation results in Hua et al. 
     pars.list <- expand.grid(b.list,mu.list,lambda.list)
     pars.list <- rbind(pars.list,expand.grid(0.7,mu.list[-1],lambda.list))
 
-#setting total simulation time for trees
+setting total simulation time for trees
 
     max.t=15
 
-#the code simulates 1000 trees under each parameter set. It takes very long time, so users can just simulate 1 tree by changing j in 1:1000 to j in 1.
+the code simulates 1000 trees under each parameter set. It takes very long time, so users can just simulate 1 tree by changing j in 1:1000 to j in 1.
 
     n <- nrow(pars.list)
     tree.list <- vector("list",n)
