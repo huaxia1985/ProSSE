@@ -1,9 +1,9 @@
 # ProSSE
-# Protracted Speciation Extinction
+	# Protracted Speciation Extinction
 
 See details in Hua X., Herdha T., Burden C. 2022. Protracted speciation under the state-dependent speciation and extinction approach. Syst. Biol. doi:10.1093/sysbio/syac041
 
-# Extending Protracted Speciation Extinction to account for multiple delimitation criteria, and uncertain species identities
+	# Extending Protracted Speciation Extinction to account for multiple delimitation criteria, and uncertain species identities
 
 See details in Hua X., Moritz C. 2023. A phylogenetic approach to delimitate species in a probabilistic way.
 
