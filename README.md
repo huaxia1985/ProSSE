@@ -201,7 +201,7 @@ Run MCMC
 set control=list(method="fftR") if using R solver without recompiling package, which will be slow. Otherwise, the default is using C solver.
 
 	mcmc.list[[i]][[j]] <- mcmc.prosse(lik=lik, drift~0, tree=tree, species.name=species.name, unknown.tip=unknown.tip, traits=tree$traits, states=tree$states, states.sd=states.sd, lambda=exp.x, control=list(method="fftR"), x.init=x.init, nstepsw=30,nsteps=5000,w=rep(1,8),prior=prior,lower=rep(0,8),upper=c(Inf,Inf,Inf,Inf,Inf,1,1,Inf))
-}
+	}
 
 ### The code you can use to regenerate the case study results in Hua and Moritz 2023 is in the case study folder.
 ### Here uses the Carlia example to demonstrate how to apply ProSSE to your own data:
