@@ -28,7 +28,7 @@ Alternatively, to use faster solver in C, user needs to recompile 'diversitree' 
 
         library(diversitree)
 
-# Here is the code you can use to regenerate the simulation results in Hua et al. 2022:
+## Here is the code you can use to regenerate the simulation results in Hua et al. 2022:
 
 Setting parameter values
 
