@@ -231,7 +231,7 @@ Define states, states.sd, and lambda if you want to model speciation completion 
     states <- states-mean(states)
     names(states.sd) <- tree$tip.label
     
-Define traits if you want to model occurrence between speciation completion rate and trait transitions. You can include as many traits as you want. In the Carlia example, traits are male throat color and habitat.
+Define traits if you want to model occurrence between speciation completion and trait transition. You can include as many traits as you want. In the Carlia example, traits are male throat color and habitat.
 
     traits <- data[tree$species,c(3,4)]
     rownames(traits) <- tree$tip.label
