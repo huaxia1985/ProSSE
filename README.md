@@ -42,7 +42,7 @@ Setting total simulation time for trees
 
     max.t=15
 
-* the code simulates 1000 trees under each parameter set. It takes very long time, so users can just simulate 1 tree by changing j in 1:1000 to j in 1.
+The code simulates 1000 trees under each parameter set. It takes very long time, so users can just simulate 1 tree by changing j in 1:1000 to j in 1.
 
     n <- nrow(pars.list)
     tree.list <- vector("list",n)
@@ -134,7 +134,7 @@ Initiate simuating 100 trees under each parameter set and fit extended ProSSE on
 	fit.list <- vector("list",n)
  	mcmc.list <- vector("list",n)
 
-* Suppose we use the first parameter set
+Suppose we use the first parameter set
 
 	i <- 1
 	pars <- pars.list[[i]]
@@ -165,7 +165,7 @@ Simulate a new tree if the old tree has too few species, too few lineages, and t
 	tree.list[[i]][[j]] <- tree
 
 Get ML estimates using extended ProSSE for the tree
-* set control=list(method="fftR") if using R solver without recompiling package, which will be slow. Otherwise, the default is using C solver.
+set control=list(method="fftR") if using R solver without recompiling package, which will be slow. Otherwise, the default is using C solver.
 
 	lik <- make.prosse(tree=tree, traits=tree$traits, states=tree$states, states.sd=states.sd, lambda=exp.x, control=list(method="fftR"))
 	p <- starting.point.prosse(tree=tree, lik=lik, q.div=5, states=tree$states, states.sd=states.sd, lambda=exp.x)
@@ -198,7 +198,7 @@ Define likelihood function
 	x.init <- c(p[-8],tree$species[unknown.tip])
  
 Run MCMC
-* set control=list(method="fftR") if using R solver without recompiling package, which will be slow. Otherwise, the default is using C solver.
+set control=list(method="fftR") if using R solver without recompiling package, which will be slow. Otherwise, the default is using C solver.
 
 	mcmc.list[[i]][[j]] <- mcmc.prosse(lik=lik, drift~0, tree=tree, species.name=species.name, unknown.tip=unknown.tip, traits=tree$traits, states=tree$states, states.sd=states.sd, lambda=exp.x, control=list(method="fftR"), x.init=x.init, nstepsw=30,nsteps=5000,w=rep(1,8),prior=prior,lower=rep(0,8),upper=c(Inf,Inf,Inf,Inf,Inf,1,1,Inf))
 }
