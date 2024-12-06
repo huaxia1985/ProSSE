@@ -28,7 +28,7 @@ Alternatively, to use faster solver in C, user needs to recompile 'diversitree' 
 
         library(diversitree)
 
-## Here is the code you can use to regenerate the simulation results in Hua et al. 2022:
+### Here is the code you can use to regenerate the simulation results in Hua et al. 2022:
 
 Setting parameter values
 
@@ -91,7 +91,7 @@ Get ML estimates using ProSSE for species-level tree
 	fit.rep.list[[i]][[j]] <- fit$par
 	}
  
-# Here is the code you can use to regenerate the simulation results in Hua and Moritz 2023:
+### Here is the code you can use to regenerate the simulation results in Hua and Moritz 2023:
 
 Setting parameter values
 
@@ -203,8 +203,8 @@ Run MCMC
 	mcmc.list[[i]][[j]] <- mcmc.prosse(lik=lik, drift~0, tree=tree, species.name=species.name, unknown.tip=unknown.tip, traits=tree$traits, states=tree$states, states.sd=states.sd, lambda=exp.x, control=list(method="fftR"), x.init=x.init, nstepsw=30,nsteps=5000,w=rep(1,8),prior=prior,lower=rep(0,8),upper=c(Inf,Inf,Inf,Inf,Inf,1,1,Inf))
 }
 
-# The code you can use to regenerate the case study results in Hua and Moritz 2023 is in the case study folder.
-# Here uses the Carlia example to demonstrate how to apply ProSSE to your own data:
+### The code you can use to regenerate the case study results in Hua and Moritz 2023 is in the case study folder.
+### Here uses the Carlia example to demonstrate how to apply ProSSE to your own data:
 
 Load tree and tip data
 
