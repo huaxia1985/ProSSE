@@ -250,8 +250,7 @@ Label species name with numbers
     species <- species.name[tree$species]
     tree$species <- species
 
-Prepare inputs to define likelihood function
-Assigning tip with unknown species identities into a species complex if you want to estimate seperate speciation completion rate for cryptic species and morphological species
+Assigning tips with unknown species identities into species complex if you want to estimate seperate speciation completion rate for cryptic species and morphological species
 
     types <- numeric(length(tree$tip.label))
     names(types) <- tree$tip.label
