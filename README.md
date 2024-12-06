@@ -42,7 +42,7 @@ Setting total simulation time for trees
 
     max.t=15
 
-The code simulates 1000 trees under each parameter set. It takes very long time, so users can just simulate 1 tree by changing j in 1:1000 to j in 1.
+The code simulates 1000 trees under each parameter set
 
     n <- nrow(pars.list)
     tree.list <- vector("list",n)
