@@ -1,6 +1,7 @@
 # ProSSE
 
 Hua X., Herdha T., Burden C. 2022. Protracted speciation under the state-dependent speciation and extinction approach. Syst. Biol. doi:10.1093/sysbio/syac041
+
 Hua X., Moritz C. 2023. A phylogenetic approach to delimitate species in a probabilistic way.
 
 To use ProSSE without re-compile the diversitree package, users use the following steps (note that this option only allows for solvers in R):
