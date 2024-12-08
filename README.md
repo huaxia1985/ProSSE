@@ -144,18 +144,18 @@ Initiate simuating 100 trees under each parameter set and fit extended ProSSE on
 	fit.list <- vector("list",n)
  	mcmc.list <- vector("list",n)
 
-Suppose we use the first parameter set
+For each parameter set,
 
-	i <- 1
-	pars <- pars.list[[i]]
-	tree.list[[i]] <- vector("list",100)
-	fit.list[[i]] <- vector("list",100)
-	mcmc.list[[i]] <- vector("list",10)
+	for (i in 1:30) {
+		pars <- pars.list[[i]]
+		tree.list[[i]] <- vector("list",100)
+		fit.list[[i]] <- vector("list",100)
+		mcmc.list[[i]] <- vector("list",10)
 
 Get the probability distribution of the root state
 
-	root.p <- as.numeric(pars.list[[i]][[5]][[1]])
-	root.p <- rev(root.p/sum(root.p))
+		root.p <- as.numeric(pars.list[[i]][[5]][[1]])
+		root.p <- rev(root.p/sum(root.p))
 
 Simulate 100 tree under extended ProSSE
 
