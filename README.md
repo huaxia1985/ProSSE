@@ -187,6 +187,7 @@ Apply constrains on parameters, e.g., make drift term equals 0
 	fit.list[[i]][[j]] <- fit$par.full
 
 Apply MCMC to infer species identities of these tips, while coestimating parameters
+
 Pick 10% tips to have unknown species identities
 
 	n.unknown.tip <- round(length(tree$tip.label)*0.1)
