@@ -21,8 +21,7 @@ mcmc.prosse(lik, ..., tree, species.name, unknwon.tip, unknown.list,
   \item{lik}{Likelihood function generated from make.prosse. See ?make.prosse
   	for arguments traits, types, states, states.sd, lambda, control}
   
-  \item{...}{other arguments, for example, constraints on the 
-  	likelihood function}
+  \item{...}{constraints on the likelihood function}
   
   \item{tree}{An ultrametric bifurcating phylogenetic tree, in
     \code{ape} \dQuote{phylo} format. In the tree, tree$species, 
