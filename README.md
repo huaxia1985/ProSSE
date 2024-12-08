@@ -9,6 +9,7 @@ To use ProSSE without re-compile the diversitree package, users use the followin
 3. install and library R packages 'diversitree', 'ape', and 'deSolve' in R
 4. import all the downloaded R files into R, using source("file location")
 5. now all the functions are ready to use
+6. The help file for each main function is in the 'man' folder
 
 Alternatively, to use faster solver in C, user needs to recompile 'diversitree' R package locally, following these steps:
 1. download and upzip 'diversitree' source code
@@ -28,6 +29,12 @@ Alternatively, to use faster solver in C, user needs to recompile 'diversitree' 
 11. now ProSSE is ready to use 
 
         library(diversitree)
+    
+13. you can access help files from R, using
+
+     	? make.prosse
+    	? mcmc.prosse
+    	? tree.prosse
 
 ### Here is the code you can use to regenerate the simulation results in Hua et al. 2022:
 
