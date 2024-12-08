@@ -33,8 +33,10 @@ Alternatively, to use faster solver in C, user needs to recompile 'diversitree' 
 13. you can access help files from R, using
 
      	? make.prosse
+    	? make.prosse.sp
     	? mcmc.prosse
     	? tree.prosse
+    	? tree.prosse.multi
 
 ### Here is the code you can use to regenerate the simulation results in Hua et al. 2022:
 
