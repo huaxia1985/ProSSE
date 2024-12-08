@@ -174,8 +174,8 @@ Simulate a new tree if the old tree has too few species, too few lineages, and t
 	}
 	tree.list[[i]][[j]] <- tree
 
-Get ML estimates using extended ProSSE for the tree
-set control=list(method="fftR") if using R solver without recompiling package, which will be slow. Otherwise, the default is using C solver.
+Get ML estimates using extended ProSSE for the tree.
+Set control=list(method="fftR") if using R solver without recompiling package, which will be slow. Otherwise, the default is using C solver.
 
 	lik <- make.prosse(tree=tree, traits=tree$traits, states=tree$states, states.sd=states.sd, lambda=exp.x, control=list(method="fftR"))
 	p <- starting.point.prosse(tree=tree, lik=lik, q.div=5, states=tree$states, states.sd=states.sd, lambda=exp.x)
