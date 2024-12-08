@@ -154,8 +154,8 @@ For each parameter set,
 
 Get the probability distribution of the root state
 
-		root.p <- as.numeric(pars.list[[i]][[5]][[1]])
-		root.p <- rev(root.p/sum(root.p))
+	root.p <- as.numeric(pars.list[[i]][[5]][[1]])
+	root.p <- rev(root.p/sum(root.p))
 
 Simulate 100 tree under extended ProSSE
 
