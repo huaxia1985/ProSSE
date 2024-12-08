@@ -186,7 +186,7 @@ Apply constrains on parameters, e.g., make drift term equals 0
 	fit <- find.mle(lik,p[-8],lower=rep(0,8),upper=c(Inf,Inf,Inf,Inf,Inf,1,1,Inf))
 	fit.list[[i]][[j]] <- fit$par.full
 
-Apply MCMC to infer species identities of these tips, while coestimating parameters
+Apply MCMC to infer species identities of these tips, while coestimating parameters:
 
 Pick 10% tips to have unknown species identities
 
@@ -206,10 +206,15 @@ Set prior
  
 Define likelihood function
 
+	lik <- make.prosse(tree=tree, traits=tree$traits, states=tree$states, states.sd=states.sd, lambda=exp.x, control=list(method="fftR"))
+ 	lik <- constrain(lik,drift~0)
+	p <- starting.point.prosse(tree=tree, lik=lik, q.div=5, states=tree$states, states.sd=states.sd, lambda=exp.x)
+ 
+Set initial parameter values
+
 	x.init <- c(p[-8],tree$species[unknown.tip])
  
 Run MCMC
-set control=list(method="fftR") if using R solver without recompiling package, which will be slow. Otherwise, the default is using C solver.
 
 	mcmc.list[[i]][[j]] <- mcmc.prosse(lik=lik, drift~0, tree=tree, species.name=species.name, unknown.tip=unknown.tip, traits=tree$traits, states=tree$states, states.sd=states.sd, lambda=exp.x, control=list(method="fftR"), x.init=x.init, nstepsw=30,nsteps=5000,w=rep(1,8),prior=prior,lower=rep(0,8),upper=c(Inf,Inf,Inf,Inf,Inf,1,1,Inf))
 	}
