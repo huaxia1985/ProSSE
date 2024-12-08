@@ -330,7 +330,7 @@ Run MCMC
 
     mcmc.result <- mcmc.prosse(lik=lik, p12.1~0,p21.1~1,p12.2~1,p21.2~1, tree=tree, species.name=species.name, unknown.tip=unknown.tip, unknown.list=unknown.list, traits=traits, types=types, states=states, states.sd=states.sd, lambda=lambda, x.init=x.init, nstepsw=30,nsteps=1000,w=rep(1,8),prior=prior,lower=rep(0,8),upper=rep(Inf,8), save.file=filename)
 
-Define alternative likelihood function, if you want to compare different models. In the Carlia example, the alterantive model is speciation competion rate for cryptic species is constant
+Define alternative likelihood function, if you want to compare different models. In the Carlia example, the alterantive model is that speciation competion rate for cryptic species is constant
 
     lik.const <- make.prosse(tree,traits=traits,types=types)
     lik.const <- constrain(lik.const,p12.1~0,p21.1~1,p12.2~1,p21.2~1)
