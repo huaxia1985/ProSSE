@@ -15,16 +15,17 @@ Alternatively, to use faster solver in C, user needs to recompile 'diversitree' 
 2. download all the files from this repository
 3. replace NAMESPACE in the 'diversitree' source code
 4. put all the files in the 'R' folder to the 'R' folder in the the 'diversitree' source code
-5. put all the files in the 'man' folder to the 'man' folder in the the 'diversitree' source code
-6. install R package 'devtools' (note that 'diversitree' needs gsl installed)
-7. using devtools to compile 'diversitree' locally
+5. put all the files in the 'C' folder to the 'C' folder in the the 'diversitree' source code
+6. put all the files in the 'man' folder to the 'man' folder in the the 'diversitree' source code
+7. install R package 'devtools' (note that 'diversitree' needs gsl installed)
+8. using devtools to compile 'diversitree' locally
 
        library(devtools)
        install("your path to save the 'diversitree' source code")
        
-8. R may ask if dependent packages need to be updated. Choose according to your needs
-9. after the package installed. Restart R.
-10. now ProSSE is ready to use 
+9. R may ask if dependent packages need to be updated. Choose according to your needs
+10. after the package installed. Restart R.
+11. now ProSSE is ready to use 
 
         library(diversitree)
 
