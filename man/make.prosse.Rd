@@ -39,7 +39,8 @@ starting.point.prosse(tree, lik, q.div=5, types, states, states.sd, lambda)
   	rate depends on the continuous trait. Lambda is required when states
   	is provided}
   \item{control}{A list of control parameters for the FFT. See make.quasse
-    for details.}
+    for details. Need to set control=list(method="fftR") to use solvers in 
+    R when using prosse without recompling}
   \item{q.div}{see starting.point.bisse}
 }
 
