@@ -27,8 +27,11 @@ mcmc.prosse(lik, ..., tree, species.name, unknwon.tip, unknown.list,
     \code{ape} \dQuote{phylo} format. In the tree, tree$species, 
     named by tree$tip.label, gives the species identity of each tip}
     
-  \item{species.name}{species name of the tips with unknown species 
-  	identities if the tip is an unique species}
+  \item{species.name}{A vector of integers, with each integer labels a 
+	species identity. The first several integers are for existing
+	species names in the tree. This is followed by integers that each
+	labels the unique species name for each tip of unknown species
+	identity}
   	
   \item{unknown.tip}{tip name of the tips with unknown species identities}
   
@@ -36,7 +39,10 @@ mcmc.prosse(lik, ..., tree, species.name, unknwon.tip, unknown.list,
   	species identities of the tip. When there is no prior knowledge on the set,
   	unknown.list is set to NULL}
   
-  \item{x.init}{Initial parameter values.}
+  \item{x.init}{Initial parameter values that consist of the parameters defined
+	by the likelihood function, followed by the guessed species identity of each
+	tips with unknown species identities, which can be set to the unique species
+	name of these tips}
   
   \item{nstepsw}{number of the initial steps to determine w}
   
