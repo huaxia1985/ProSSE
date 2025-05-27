@@ -1,6 +1,6 @@
 # ProSSE
 
-Hua X., Herdha T., Burden C. 2022. Protracted speciation under the state-dependent speciation and extinction approach. Syst. Biol. doi:10.1093/sysbio/syac041
+Hua X., Herdha T., Burden C. 2022. Protracted speciation under the state-dependent speciation and extinction approach. Syst. Biol. http://doi.org/10.1093/sysbio/syac041
 
 Hua X., Moritz C. 2025. A phylogenetic approach to delimitate species in a probabilistic way. Syst. Biol. https://doi.org/10.1093/sysbio/syaf004
 *The dryad link on the online version is broken. But you can find the supplementary Information here in SI_Hua_Mortiz_2023.pdf.
