@@ -40,7 +40,6 @@ static R_CallMethodDef R_CallDef[] = {
    CALLDEF(r_do_asr_joint, 7),
    CALLDEF(r_do_integrate, 9),
    CALLDEF(r_do_integrate_prosse_multi, 14),
-   CALLDEF(r_do_integrate_mosse, 10),
    CALLDEF(r_do_tips, 9),
    CALLDEF(r_dt_cont_reset_tips, 2),
    CALLDEF(r_get_vals_cont, 1),
