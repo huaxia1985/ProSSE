@@ -54,7 +54,6 @@ export(make.quasse)
 export(make.quasse.split)
 export(make.prosse)
 export(make.prosse.sp)
-export(make.mosse)
 export(make.yule)
 
 ## 2. print:
