@@ -1,7 +1,7 @@
 #pars <- c(b,mu,lambda.x,char.evol,list(rate matrix for each trait transition),list(speciation prob matrix for each trait transition))
 #x0 initial value of the state and of each trait
 ## char.evol <- make.brownian.with.drift(0, 0.01)
-tree.prosse.stochastic <- function(pars, max.taxa=Inf, max.t=Inf, x0, single.lineage=TRUE, verbose=F) {
+tree.prosse.multi <- function(pars, max.taxa=Inf, max.t=Inf, x0, single.lineage=TRUE, verbose=F) {
     info <- make.tree.prosse.multi(pars, max.taxa, max.t, x0, single.lineage, verbose)
   if ( single.lineage )
     info <- info[-1,]
