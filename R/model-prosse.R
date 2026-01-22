@@ -159,7 +159,7 @@ make.all.branches.prosse <- function (cache) {
   			y[3] <- A * y[3]
   			y[2] <- y[3] + (y[2]-dr0) * A * z2
   		}
-  		if (any(y[-1]<=10^-5 && y[-1]>0)) {
+  		if (any((y[-1] <= 10^-5) * (y[-1]>0)==1)) {
   			lq <- sum(y[-1])
   			y[-1] <- y[-1] / lq
   			lq <- log(lq)
