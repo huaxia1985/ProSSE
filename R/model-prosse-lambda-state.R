@@ -213,7 +213,7 @@ make.all.branches.prosse.lambda.state <- function (cache) {
     		}
     		y <- c(y[1],as.numeric(vars))
   		}
-  		if (any(y[-1]<=10^-5 && y[-1]>0)) {
+  		if (any((y[-1] <= 10^-5) * (y[-1]>0)==1)) {
   			lq <- sum(y[-1])
   			y[-1] <- y[-1] / lq
   			lq <- log(lq)
