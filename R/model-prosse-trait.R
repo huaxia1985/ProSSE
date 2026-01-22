@@ -226,7 +226,7 @@ make.all.branches.prosse.trait <- function (cache) {
     		d0 <- A * y[2:(h+1)] * z2 - dr0 * z2
     		y[2:(h+1)] <- y[(h+2):(2*h+1)] + Q %*% d0
   		}
-  		if (any(y[-1]<=10^-5 && y[-1]>0)) {
+  		if (any((y[-1] <= 10^-5) * (y[-1]>0)==1)) {
   			lq <- sum(y[-1])
   			y[-1] <- y[-1] / lq
   			lq <- log(lq)
