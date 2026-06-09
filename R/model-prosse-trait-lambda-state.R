@@ -24,7 +24,7 @@ make.prosse.trait.lambda.state <- function (tree, traits, types, states, states.
 			d.root <- d.root / (b * (1 - e.root) * (1 - er.root))
 		}
 	
-    	root.p <- diversitree:::root.p.calc(d.root, pars, root)
+    	root.p <- diversitree:::root_p_calc(d.root, pars, root)
 		loglik <- log(sum(root.p * d.root)) + sum(lq)
 
     	loglik
