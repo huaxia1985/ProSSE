@@ -116,7 +116,7 @@ filename  <- paste0("~/delimitres.const",ii,".csv")
 
 #run MCMC
 mcmc.const.list[[ii]] <-
-mcmc.prosse(lik=lik, tree=tree, species.name=species.name, unknown.tip=unknown.tip, unknown.list=unknown.list, traits=traits, types=types, x.init=x.init, nstepsw=30,nsteps=1000,w=rep(1,8),prior=prior,lower=rep(0,8),upper=rep(Inf,8), save.file=filename)
+mcmc.prosse(lik=lik.const, p12.1~0,p21.1~1,p12.2~1,p21.2~1, tree=tree, species.name=species.name, unknown.tip=unknown.tip, unknown.list=unknown.list, traits=traits, types=types, x.init=x.init, nstepsw=30,nsteps=1000,w=rep(1,8),prior=prior,lower=rep(0,8),upper=rep(Inf,8), save.file=filename)
 }
 
 #summarise delimitation results
