@@ -267,11 +267,11 @@ make.rootfunc.prosse.multi <- function(cache) {
       		b <- pars$lo$b
             d.root <- d.root / (b * (1 - e.root) * (1- er.root))
     	}
-        root.p <- diversitree:::root.p.quasse(d.root, pars$lo, root, root.f)
+        root.p <- diversitree:::root_p_quasse(d.root, pars$lo, root, root.f)
     	sum(root.p * d.root) * dx
 	}
     d.root <- apply(d.root, 2, root.p.prosse, pars, e.root, er.root, root, root.f, condition.surv)
-    root.p <- diversitree:::root.p.calc(d.root, pars, root)
+    root.p <- diversitree:::root_p_calc(d.root, pars, root)
 	
 	loglik <- log(sum(root.p * d.root)) + sum(lq)
 
